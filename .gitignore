@@ -33,3 +33,7 @@
 
 # build directory
 /build
+
+# IDL generation outputs
+/src/test*
+!/src/test.idl

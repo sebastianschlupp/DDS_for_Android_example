@@ -1,0 +1,77 @@
+/*
+* Copyright 2024 Sebastian Schlupp
+*
+* SPDX-License-Identifier: Apache-2.0
+*/
+{
+	"folders": [
+		{
+			"name": "Workspace",
+			"path": "."
+		},
+		{
+			"name": "dependencies",
+			"path": ".."
+		}
+	],
+	"settings": {
+		"C_Cpp.default.includePath": [
+			".",
+			"${workspaceFolder:Workspace}/src",
+			"${workspaceFolder:dependencies}/install/fastrtps/include/",
+			"${workspaceFolder:dependencies}/install/fastcdr/include/",
+		],
+		"terminal.integrated.cwd": "${workspaceFolder:Workspace}/build",
+		"terminal.integrated.profiles.osx": {
+			"bash": {
+				"path": "bash",
+				"args": [
+					"-l"
+				],
+				"icon": "terminal-bash"
+			},
+			"zsh": {
+				"path": "zsh",
+				"args": [
+					"-l"
+				]
+			},
+			"fish": {
+				"path": "fish",
+				"args": [
+					"-l"
+				]
+			},
+			"tmux": {
+				"path": "tmux",
+				"icon": "terminal-tmux"
+			},
+			"pwsh": {
+				"path": "pwsh",
+				"icon": "terminal-powershell"
+			}
+		},
+		"esbonio.sphinx.confDir": "",
+		"files.associations": {
+			"typeindex": "cpp",
+			"typeinfo": "cpp"
+		}
+	},
+	"extensions": {   
+		"recommendations": [ 
+			"RTI.omg-idl",
+			
+			"ms-vscode.cpptools",
+			"ms-vscode.makefile-tools",
+			"lextudio.restructuredtext",
+			"ms-python.python",
+			
+			"mhutchie.git-graph",
+			"GitHub.github-vscode-theme",
+			"fabiospampinato.vscode-open-in-github",
+			"dodonew.zephyr-color-log",
+
+			"cschlosser.doxdocgen"
+		]
+	}
+}

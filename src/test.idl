@@ -1,0 +1,59 @@
+/**
+ * @file test.idl
+ * @brief .idl file defining scalar and array property with various
+ * potential value types
+ */
+
+/*
+ * Copyright 2024 Sebastian Schlupp
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+/*module android_property_transfer{*/
+
+union primitive_value switch (long) {
+case 0x00100000:
+	string string_value;
+case 0x00200000:
+	boolean boolean_value;
+case 0x00400000:
+	long int32_value;
+case 0x00500000:
+	long long int64_value;
+case 0x00600000:
+	float float_value;
+};
+
+union sequence_values switch (long) { //according to this: https://github.com/eProsima/Fast-DDS-Gen/issues/43
+	//"unbounded" sequences are statically preallocated to length of 100.
+	// Using sequence instead of array gives additional Cpp std::vector methods like append, getting iterator or reverse iterator etc.
+	case 0x00410000:
+		sequence<long> int32_vector_values;
+	case 0x00510000:
+		sequence<long long> int64_vector_values;
+	case 0x00610000:
+		sequence<float> float_vector_values;
+	case 0x00700000:
+		sequence<octet> bytes_vector_values;
+};
+
+struct primitive_property {
+	unsigned long android_ID;
+	string android_name;
+	primitive_value value;
+	@optional sequence<octet, 6> VehicleAreaType; //added area IDs 
+	@optional sequence<octet, 10> VehicleAreaSeat;
+	@optional sequence<octet, 5> VehicleAreaWheel;
+};
+
+struct array_property {
+	unsigned long android_ID;
+	string android_name;
+	sequence_values value_vector;
+	@optional sequence<octet, 6> VehicleAreaType; //added area IDs
+	@optional sequence<octet, 10> VehicleAreaSeat;
+	@optional sequence<octet, 5> VehicleAreaWheel;
+};
+
+/*};*/
